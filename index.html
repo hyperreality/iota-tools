@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="IOTA Tools">
+    <meta name="author" content="Laurence Tennant">
+
+    <title>IOTA Tools</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body {
+        padding: 2em;
+      }
+      .pad-top {
+        padding-top: 2em;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <h1 class="display-4">IOTA Tools</h1>
+      <p>Some useful tools for developing in IOTA</p>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 pad-top">
+          <h2>Bits To Trits To Bytes To Trytes Converter</h2>
+          <hr>
+          Enter a decimal amount in one of the fields:
+          <br /><br />
+        </div>
+
+        <div class="col-md-3">
+          <h5>Bits</h5>
+          <div class="input-group">
+            <input id="bits" type="number" class="form-control" value="0" oninput="bitsToTritsConv(this)">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h5>Trits</h5>
+          <div class="input-group">
+            <input id="trits" type="number" class="form-control" value="0" oninput="bitsToTritsConv(this)">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h5>Bytes</h5>
+          <div class="input-group">
+            <input id="bytes" type="number" class="form-control" value="0" oninput="bitsToTritsConv(this)">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h5>Trytes</h5>
+          <div class="input-group">
+            <input id="trytes" type="number" class="form-control" value="0" oninput="bitsToTritsConv(this)">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+  </body>
+</html>
