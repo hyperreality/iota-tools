@@ -9,59 +9,141 @@
     <title>IOTA Tools</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <style>
-      body {
-        padding: 2em;
-      }
       .pad-top {
-        padding-top: 2em;
+        padding-top: 3em;
+      }
+      .footer {
+        margin-top: 4em;
+        padding-bottom: 6em;
+        margin-bottom: 0;
       }
     </style>
   </head>
 
   <body>
 
-    <div class="container">
+    <div class="container pad-top">
       <h1 class="display-4">IOTA Tools</h1>
-      <p>Some useful tools for developing in IOTA</p>
+      <p>Some useful tools for developing in IOTA.</p>
     </div>
 
     <div class="container">
+
       <div class="row">
         <div class="col-md-12 pad-top">
           <h2>Bits To Trits To Bytes To Trytes Converter</h2>
           <hr>
-          Enter a decimal amount in one of the fields:
+          Convert between units by entering a decimal value in one of the fields:
           <br /><br />
         </div>
 
         <div class="col-md-3">
           <h5>Bits</h5>
           <div class="input-group">
-            <input id="bits" type="number" class="form-control" value="0" oninput="bitsToTritsConv(this)">
+            <input id="bits_bits" type="number" class="form-control" oninput="bitsToTritsConv(this)" autofocus>
           </div>
         </div>
         <div class="col-md-3">
           <h5>Trits</h5>
           <div class="input-group">
-            <input id="trits" type="number" class="form-control" value="0" oninput="bitsToTritsConv(this)">
+            <input id="bits_trits" type="number" class="form-control" oninput="bitsToTritsConv(this)">
           </div>
         </div>
         <div class="col-md-3">
           <h5>Bytes</h5>
           <div class="input-group">
-            <input id="bytes" type="number" class="form-control" value="0" oninput="bitsToTritsConv(this)">
+            <input id="bits_bytes" type="number" class="form-control" oninput="bitsToTritsConv(this)">
           </div>
         </div>
         <div class="col-md-3">
           <h5>Trytes</h5>
           <div class="input-group">
-            <input id="trytes" type="number" class="form-control" value="0" oninput="bitsToTritsConv(this)">
+            <input id="bits_trytes" type="number" class="form-control" oninput="bitsToTritsConv(this)">
           </div>
         </div>
+      </div>
 
+      <div class="row">
+        <div class="col-md-12 pad-top">
+          <h2>Base10 to Ternary</h2>
+          <hr>
+          When pad is checked, the trit representation will be right-padded with zeroes up to a multiple of 3 (tryte alignment).
+          <br /><br />
+        </div>
+
+        <div class="col-md-3">
+          <h5>Base10</h5>
+          <div class="input-group">
+            <input id="base10_base10" type="number" class="form-control" oninput="base10Conv(this)">
+          </div>
+        </div>
+        <div class="col-md-1">
+          <h5>Pad</h5>
+          <div class="input-group">
+            <label class="custom-control custom-checkbox">
+              <input id="base10_pad" type="checkbox" class="custom-control-input" onchange="base10Conv(document.getElementById('base10_base10'))" checked>
+              <span class="custom-control-indicator"></span>
+            </label>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <h5>Trits</h5>
+          <div class="input-group">
+            <input id="base10_trits" class="form-control" oninput="base10Conv(this)">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h5>Trytes</h5>
+          <div class="input-group">
+            <input id="base10_trytes" class="form-control" oninput="base10Conv(this)">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 pad-top">
+          <h2>ASCII Message to Trytes</h2>
+          <hr>
+          Read about the implementation <a href="https://github.com/iotaledger/iota.lib.js/blob/master/lib/utils/asciiToTrytes.js">here</a>.
+          <br /><br />
+        </div>
+
+        <div class="col-md-6">
+          <h5>ASCII</h5>
+          <div class="input-group">
+            <textarea id="ascii_ascii" class="form-control" oninput="asciiConv(this)" rows="5"></textarea>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h5>Trytes</h5>
+          <div class="input-group">
+            <textarea id="ascii_trytes" class="form-control" oninput="asciiConv(this)" rows="5"></textarea>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="jumbotron footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Resources</h5>
+            <hr>
+            <h5><a href="https://iota.readme.io/docs/fields">IOTA API Documentation</a></h5>
+            <h5><a href="https://github.com/iotaledger/iota.lib.js">iota.lib.js</a></h5>
+          </div>
+          <div class="col-md-6">
+            <h5>Contact</h5>
+            <hr>
+            Please make a pull request in this website's <a href="https://github.com/hyperreality/iota-tools">repository</a>.
+          </div>
+        </div>
       </div>
     </div>
 
+    <script src="./js/converter.js"></script>
+    <script src="./js/iota.min.js"></script>
     <script src="./js/index.js"></script>
   </body>
 </html>
