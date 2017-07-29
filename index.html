@@ -10,12 +10,18 @@
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <style>
       .pad-top {
-        padding-top: 3em;
+        padding-top: 2.1em;
+      }
+      .pad-top-small {
+        padding-top: 0.7em;
       }
       .footer {
         margin-top: 4em;
         padding-bottom: 6em;
         margin-bottom: 0;
+      }
+      .red-border {
+        border: 1px solid #CC3232 !important;
       }
     </style>
   </head>
@@ -31,35 +37,43 @@
 
       <div class="row">
         <div class="col-md-12 pad-top">
-          <h2>Bits To Trits To Bytes To Trytes Converter</h2>
+          <h2>Bits To Trits To Bytes To Trytes Calculator</h2>
           <hr>
-          Convert between units by entering a decimal value in one of the fields:
+          Find out the amount of trits needed to represent the equivalent amount of bits, or vice-versa.
           <br /><br />
         </div>
 
         <div class="col-md-3">
           <h5>Bits</h5>
           <div class="input-group">
-            <input id="bits_bits" type="number" class="form-control" oninput="bitsToTritsConv(this)" autofocus>
+            <input id="bits_bits" class="form-control" oninput="bitsToTritsConv(this)" value="128" autofocus onfocus="this.value = this.value;">
           </div>
         </div>
         <div class="col-md-3">
           <h5>Trits</h5>
           <div class="input-group">
-            <input id="bits_trits" type="number" class="form-control" oninput="bitsToTritsConv(this)">
+            <input id="bits_trits" class="form-control" oninput="bitsToTritsConv(this)" value="81">
           </div>
         </div>
         <div class="col-md-3">
           <h5>Bytes</h5>
           <div class="input-group">
-            <input id="bits_bytes" type="number" class="form-control" oninput="bitsToTritsConv(this)">
+            <input id="bits_bytes" class="form-control" oninput="bitsToTritsConv(this)" value="16">
           </div>
         </div>
         <div class="col-md-3">
           <h5>Trytes</h5>
           <div class="input-group">
-            <input id="bits_trytes" type="number" class="form-control" oninput="bitsToTritsConv(this)">
+            <input id="bits_trytes" class="form-control" oninput="bitsToTritsConv(this)" value="27">
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 pad-top-small">
+          <label>
+          <input id="bits_round" type="checkbox" onchange="bitsToTritsConv(document.getElementById('bits_bits'))" checked> 
+          <small class="text-muted">Round up to the nearest unit.</small>
+          </label>
         </div>
       </div>
 
@@ -67,7 +81,7 @@
         <div class="col-md-12 pad-top">
           <h2>Base10 to Ternary</h2>
           <hr>
-          When pad is checked, the trit representation will be right-padded with zeroes up to a multiple of 3 (tryte alignment).
+          Convert a decimal value into its trit and tryte representation.
           <br /><br />
         </div>
 
@@ -77,16 +91,7 @@
             <input id="base10_base10" type="number" class="form-control" oninput="base10Conv(this)">
           </div>
         </div>
-        <div class="col-md-1">
-          <h5>Pad</h5>
-          <div class="input-group">
-            <label class="custom-control custom-checkbox">
-              <input id="base10_pad" type="checkbox" class="custom-control-input" onchange="base10Conv(document.getElementById('base10_base10'))" checked>
-              <span class="custom-control-indicator"></span>
-            </label>
-          </div>
-        </div>
-        <div class="col-md-5">
+        <div class="col-md-6">
           <h5>Trits</h5>
           <div class="input-group">
             <input id="base10_trits" class="form-control" oninput="base10Conv(this)">
@@ -97,6 +102,14 @@
           <div class="input-group">
             <input id="base10_trytes" class="form-control" oninput="base10Conv(this)">
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 pad-top-small">
+          <label>
+              <input id="base10_pad" type="checkbox" onchange="base10Conv(document.getElementById('base10_base10'))" checked>
+            <small class="text-muted"> Zero-pad the trit representation up to the next multiple of three, in order that it is tryte-aligned.</small>
+          </label>
         </div>
       </div>
 
