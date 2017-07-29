@@ -39,14 +39,14 @@
         <div class="col-md-12 pad-top">
           <h2>Bits To Trits To Bytes To Trytes Calculator</h2>
           <hr>
-          Find out the amount of trits needed to represent the equivalent amount of bits, or vice-versa.
+          Find out how many trits are needed to represent the equivalent amount of bits, or vice-versa.
           <br /><br />
         </div>
 
         <div class="col-md-3">
           <h5>Bits</h5>
           <div class="input-group">
-            <input id="bits_bits" class="form-control" oninput="bitsToTritsConv(this)" value="128" autofocus onfocus="this.value = this.value;">
+            <input id="bits_bits" class="form-control" oninput="bitsToTritsConv(this)" value="128" onfocus="this.value = this.value;">
           </div>
         </div>
         <div class="col-md-3">
@@ -71,8 +71,8 @@
       <div class="row">
         <div class="col-md-12 pad-top-small">
           <label>
-          <input id="bits_round" type="checkbox" onchange="bitsToTritsConv(document.getElementById('bits_bits'))" checked> 
-          <small class="text-muted">Round up to the nearest unit.</small>
+            <input id="bits_round" type="checkbox" onchange="bitsToTritsConv(document.getElementById('bits_bits'))" checked> 
+            <small class="text-muted">Round up to the nearest unit.</small>
           </label>
         </div>
       </div>
@@ -107,7 +107,7 @@
       <div class="row">
         <div class="col-md-12 pad-top-small">
           <label>
-              <input id="base10_pad" type="checkbox" onchange="base10Conv(document.getElementById('base10_base10'))" checked>
+            <input id="base10_pad" type="checkbox" onchange="base10Conv(document.getElementById('base10_base10'))" checked>
             <small class="text-muted"> Zero-pad the trit representation up to the next multiple of three, in order that it is tryte-aligned.</small>
           </label>
         </div>
@@ -149,7 +149,7 @@
           <div class="col-md-6">
             <h5>Contact</h5>
             <hr>
-            Please make a pull request in this website's <a href="https://github.com/hyperreality/iota-tools">repository</a>.
+            Please <a href="https://github.com/hyperreality/iota-tools">post an issue or pull request</a>.
           </div>
         </div>
       </div>

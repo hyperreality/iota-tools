@@ -91,6 +91,7 @@ function bitsToTritsConv(field) {
 
 function base10Conv(field) {
   if (isEmpty(field.value)) {
+    console.log("here");
     clearFields('base10');
     showValid('base10');
     return;
@@ -99,7 +100,7 @@ function base10Conv(field) {
   switch (field.id) {
     default:
     case 'base10_base10':
-      if (!isNumeric(field.value)) {
+      if (field.value != '-' && !isNumeric(field.value)) {
         showError(field);
         return;
       }
@@ -156,5 +157,13 @@ function asciiConv(field) {
       document.getElementById('ascii_ascii').value = iota.utils.fromTrytes(field.value);
       break;
   }
+}
+
+if (screen.width > 800) {
+  var input = document.getElementById('bits_bits');
+  input.focus();
+  var val = input.value;
+  input.value = '';
+  input.value = val;
 }
 
