@@ -37,6 +37,52 @@
 
       <div class="row">
         <div class="col-md-12 pad-top">
+          <h2>Iota Unit Converter</h2>
+          <hr>
+          Convert between denominations of IOTA and see how much they are worth in US dollars at current Bitfinex rate (1 Mi = <span id="rate"><span class="text-muted">loading...</span></span> USD). Note that all denominations of Iota are rounded to the nearest integer so use the Iotas field for maximum precision.
+          <br /><br />
+        </div>
+
+        <div class="col-md-2">
+          <h5>USD</h5>
+          <div class="input-group">
+            <input id="iota_usd" class="form-control" oninput="iotaValueConv(this)">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <h5>Iotas</h5>
+          <div class="input-group">
+            <input id="iota_iotas" type="number" class="form-control" oninput="iotaValueConv(this)">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <h5>KiloIotas (Ki)</h5>
+          <div class="input-group">
+            <input id="iota_kiotas" type="number" class="form-control" oninput="iotaValueConv(this)">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <h5>MegaIotas (Mi)</h5>
+          <div class="input-group">
+            <input id="iota_miotas" type="number" class="form-control" oninput="iotaValueConv(this)">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <h5>GigaIotas (Gi)</h5>
+          <div class="input-group">
+            <input id="iota_giotas" type="number" class="form-control" oninput="iotaValueConv(this)">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <h5>TeraIotas (Ti)</h5>
+          <div class="input-group">
+            <input id="iota_tiotas" type="number" class="form-control" oninput="iotaValueConv(this)">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 pad-top">
           <h2>Bits To Trits To Bytes To Trytes Calculator</h2>
           <hr>
           Find out how many trits are needed to represent the equivalent amount of bits, or vice-versa.
@@ -46,7 +92,7 @@
         <div class="col-md-3">
           <h5>Bits</h5>
           <div class="input-group">
-            <input id="bits_bits" class="form-control" oninput="bitsToTritsConv(this)" value="128" onfocus="this.value = this.value;">
+            <input id="bits_bits" class="form-control" oninput="bitsToTritsConv(this)" value="128">
           </div>
         </div>
         <div class="col-md-3">
@@ -157,6 +203,7 @@
 
     <script src="./js/converter.js"></script>
     <script src="./js/iota.min.js"></script>
+    <script src="./js/api.js"></script>
     <script src="./js/index.js"></script>
   </body>
 </html>

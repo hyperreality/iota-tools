@@ -42,6 +42,51 @@ function tritsToBits(trits) {
   return trits * Math.log(3) / Math.log(2);
 }
 
+function iotaValueConv(field) {
+  if (isEmpty(field.value)) {
+    clearFields('iota');
+    showValid('iota');
+    return;
+  } else if (!isPositiveNumeric(field.value)) {
+    showError(field);
+    return;
+  } else if (!loaded) { // don't know exchange rate yet
+    return;
+  }
+  showValid('iota');
+
+  switch (field.id) {
+    case 'iota_kiotas':
+      var iotas = iotas == undefined ? field.value * 1000 : iotas;
+    case 'iota_miotas':
+      var iotas = iotas == undefined ? field.value * 1000000 : iotas;
+    case 'iota_giotas':
+      var iotas = iotas == undefined ? field.value * 1000000000 : iotas;
+    case 'iota_tiotas':
+      var iotas = iotas == undefined ? field.value * 1000000000000 : iotas;
+    case 'iota_iotas':
+      var iotas = iotas == undefined ? field.value : iotas;
+      document.getElementById('iota_iotas').value = iotas;
+      document.getElementById('iota_kiotas').value = Math.round(iotas / 1000);
+      document.getElementById('iota_miotas').value = Math.round(iotas / 1000000);
+      document.getElementById('iota_giotas').value = Math.round(iotas / 1000000000);
+      document.getElementById('iota_tiotas').value = Math.round(iotas / 1000000000000);
+      document.getElementById('iota_usd').value = Math.round(rate * (iotas / 1000000) * 100) / 100;
+      iotas = undefined;
+      break;
+    case 'iota_usd':
+      var iotas = Math.round((field.value * 1000000) / rate);
+      document.getElementById('iota_iotas').value = iotas;
+      document.getElementById('iota_kiotas').value = Math.round(iotas / 1000);
+      document.getElementById('iota_miotas').value = Math.round(iotas / 1000000);
+      document.getElementById('iota_giotas').value = Math.round(iotas / 1000000000);
+      document.getElementById('iota_tiotas').value = Math.round(iotas / 1000000000000);
+      iotas = undefined;
+      break;
+  }
+
+}
+
 function bitsToTritsConv(field) {
   if (isEmpty(field.value)) {
     clearFields('bits');
@@ -160,7 +205,7 @@ function asciiConv(field) {
 }
 
 if (screen.width > 800) {
-  var input = document.getElementById('bits_bits');
+  var input = document.getElementById('iota_usd');
   input.focus();
   var val = input.value;
   input.value = '';
