@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="IOTA Tools">
+    <meta name="author" content="Laurence Tennant">
+
+    <title>IOTA Tools: Seed Generator</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">IOTA Tools</a>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Converters</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="seed.html">Seed Generator</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container pad-top">
+      <h1 class="display-4">IOTA Seed Generator</h1>
+      <hr />
+      A deterministic seed generator based on the <a href="http://masterpasswordapp.com/algorithm.html">Master Password Algorithm</a>, adapted from Tom Thorogood's <a href="https://github.com/tmthrgd/mpw-js">Javascript implementation</a> in particular, which is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>-licensed.<br /><br />
+
+      Please do not use these seeds yet!
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-12 pad-top">
+          <h3>Master Password</h3>
+          <hr>
+        </div>
+
+        <div class="col-md-3">
+          <h5>Full name</h5>
+          <div class="input-group">
+            <input class="form-control" name=fullname required placeholder="John Doe Smith">
+          </div>
+        </div>
+        <div class="col-md-7">
+          <h5>Master Password</h5>
+          <div class="input-group">
+            <input class="form-control"Thu 17 Aug 2017 00:08:42 BST disabled name=masterpassword required type=password placeholder=Password>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <h5>&nbsp;</h5>
+          <div class="input-group">
+            <button class="btn btn-primary" disabled name=calculatekey>Calculate key</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 pad-top">
+          <h3>Settings</h3>
+          <hr>
+        </div>
+
+        <div class="col-md-3">
+          <h5>Seed name</h5>
+          <div class="input-group">
+            <input class="form-control" disabled name=site required value=myseed1>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <h5>Counter</h5>
+          <div class="input-group">
+            <input class="form-control" disabled name=counter required type=number min=1 max=2147483647 value=1></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 pad-top">
+          <h3>Generated Seed</h3>
+          <hr>
+        </div>
+
+        <div class="col-md-12">
+          <h5>Seed</h5>
+          <div class="input-group">
+            <input class="form-control password" disabled readonly>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 pad-top-small">
+          <div class=error><noscript>You must have JavaScript enabled for this page to work.</noscript></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="jumbotron footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Resources</h5>
+            <hr>
+            <h5><a href="https://iota.readme.io/docs/fields">IOTA API Documentation</a></h5>
+            <h5><a href="https://github.com/iotaledger/iota.lib.js">iota.lib.js</a></h5>
+          </div>
+          <div class="col-md-6">
+            <h5>Contact</h5>
+            <hr>
+            Please <a href="https://github.com/hyperreality/iota-tools">post an issue or pull request</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/converter.js"></script>
+    <script src="./js/words.js"></script>
+
+	<script>
+	// Test for required ES6 features
+	// This test must be in a seperate script tag as they are
+	// language features and ES5 parsers will hard-fail otherwise
+	
+	// If the ES6 class, let, destructive assignment and rest arguments
+	// are supported, this will be successful and ES6 files will be loaded
+	// rather than the transpiled files
+	class $ES6 { constructor() { let b = true; this.b = b; } }
+	const [canES6] = ((...args) => args)(new $ES6().b);
+	</script>
+	<script>
+	// If the needed ES6 features aren't supported the ES6 to ES5
+	// transpiled files will be loaded instead
+	var esdir = (typeof canES6 !== "undefined" && canES6) ? "" : "es5/";
+
+	// If setImmediate is not implemented we include the polyfill
+	window.setImmediate || document.write("<script src=mpw-js\/setImmediate-polyfill.js><\/script>");
+	
+	// If Typed Arrays are not supported we include the polyfill
+	// https://github.com/inexorabletash/polyfill
+	window.ArrayBuffer || document.write("<script src=typedarray-polyfill.js><\/script>");
+	
+	// If TextEncoder is not supported we include the polyfill
+	// https://github.com/inexorabletash/text-encoding
+	window.TextEncoder || document.write("<script src=encoding-polyfill.js><\/script>");
+	
+	// If Promise is not supported we include the polyfill
+	// https://github.com/taylorhakes/promise-polyfill
+	window.Promise || document.write("<script src=promise-polyfill.js><\/script>");
+	
+	// Alias window.crypto.subtle with window.crypto.webkitSubtle if
+	// the latter but not the former is supported
+	if (!window.crypto.subtle && window.crypto.webkitSubtle) {
+		window.crypto.subtle = window.crypto.webkitSubtle;
+	}
+	
+	// If Web Crypto API is not supported we include a JS crypto library
+	// https://code.google.com/p/crypto-js/
+	if (!window.crypto.subtle) {
+		document.write("<script src=https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha384.js><\/script>");
+		document.write("<script src=https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/pbkdf2.js><\/script>");
+		document.write("<script src=https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/lib-typedarrays-min.js><\/script>");
+	}
+	
+	// If MAX_SAFE_INTEGER (ES6) is not defined, define it
+	if (!Number.MAX_SAFE_INTEGER) {
+		Number.MAX_SAFE_INTEGER = Math.pow(2, 53) - 1;
+	}
+	
+	// If your borwser needs a lot of polyfills consider upgrading
+	// to a more modern feature rich browser, if you are a browser
+	// developer considering adding these much needed features already!
+	// :D
+	
+	// Include the scrypt implementation
+	document.write("<script src=" + esdir + "mpw-js/pbkdf2.js><\/script>");
+	document.write("<script src=" + esdir + "mpw-js/scrypt.js><\/script>");
+	
+	// Include the MPW class
+	document.write("<script src=" + esdir + "mpw-js/mpw.js><\/script>");
+	</script>
+	<script src=mpw-js/manager.js></script>
+
+  <script>
+if (screen.width > 800) {
+  var input = document.querySelector('[name=fullname]');
+  input.focus();
+  var val = input.value;
+  input.value = '';
+  input.value = val;
+}
+  </script>
+  </body>
+</html>

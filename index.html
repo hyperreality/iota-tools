@@ -6,38 +6,41 @@
     <meta name="description" content="IOTA Tools">
     <meta name="author" content="Laurence Tennant">
 
-    <title>IOTA Tools</title>
+    <title>IOTA Tools: Converters</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <style>
-      .pad-top {
-        padding-top: 2.1em;
-      }
-      .pad-top-small {
-        padding-top: 0.7em;
-      }
-      .footer {
-        margin-top: 4em;
-        padding-bottom: 6em;
-        margin-bottom: 0;
-      }
-      .red-border {
-        border: 1px solid #CC3232 !important;
-      }
-    </style>
+    <link href="./css/style.css" rel="stylesheet">
   </head>
 
   <body>
 
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">IOTA Tools</a>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Converters</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="seed.html">Seed Generator</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container pad-top">
-      <h1 class="display-4">IOTA Tools</h1>
-      <p>Some useful tools for developing in IOTA.</p>
+      <h1 class="display-4">IOTA Converters</h1>
+      <hr />
     </div>
 
     <div class="container">
 
       <div class="row">
         <div class="col-md-12 pad-top">
-          <h2>Iota Unit Converter</h2>
+          <h2>Currency Converter</h2>
           <hr>
           Convert between denominations of IOTA and see how much they are worth in US dollars at current Bitfinex rate (1 Mi = <span id="rate"><span class="text-muted">loading...</span></span> USD). Note that all denominations of Iota are rounded to the nearest integer so use the Iotas field for maximum precision.
           <br /><br />
@@ -50,7 +53,7 @@
           </div>
         </div>
         <div class="col-md-2">
-          <h5>Iotas</h5>
+          <h5>Iotas (i)</h5>
           <div class="input-group">
             <input id="iota_iotas" type="number" class="form-control" oninput="iotaValueConv(this)">
           </div>
@@ -205,5 +208,14 @@
     <script src="./js/iota.min.js"></script>
     <script src="./js/api.js"></script>
     <script src="./js/index.js"></script>
+    <script>
+if (screen.width > 800) {
+  var input = document.getElementById('iota_usd');
+  input.focus();
+  var val = input.value;
+  input.value = '';
+  input.value = val;
+}
+    </script>
   </body>
 </html>

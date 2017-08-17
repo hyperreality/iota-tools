@@ -203,12 +203,3 @@ function asciiConv(field) {
       break;
   }
 }
-
-if (screen.width > 800) {
-  var input = document.getElementById('iota_usd');
-  input.focus();
-  var val = input.value;
-  input.value = '';
-  input.value = val;
-}
-
